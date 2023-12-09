@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumas Mall.Com</title>
+    <style>
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: #bdcabe;
+        }
+        .cartContainer2 {
+        position: fixed;
+        background-color: green;
+        width: 50%;
+        height: 100%;
+        top: 0;
+        right: 3px;
+        overflow-y: scroll;
+       }
+        .cartContainer {
+            position: fixed;
+            background-color: green;
+            width: 0;
+            height: 100%;
+            top: 0;
+            right: 0px;
+        }
+
+       .allItemWrap{
+        margin: 5px;
+       }
+       .allItemWrap > img {
+        width: 250px;
+       }
+
+       .itemValuesContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 10px;
+        overflow: hidden;
+       }
+
+       .namePriceContainer {
+        display: flex;
+       }
+       .namePriceContainer > p {
+        color: green;
+       }
+
+       .namePriceContainer > p:nth-child(1) {
+        display: flex;
+        flex-wrap: wrap;
+        height: fit-content;
+        flex-direction: column;
+        font-weight: 700;
+        font-size: 15px;
+       }
+       
+
+       .moreAddToCartBtnContainer {
+        display: flex;
+        justify-content: space-around;
+       }
+
+       .moreBtn {
+        background-color: transparent;
+        border: none;
+        color: blue;
+        text-decoration: underline 3px dotted;
+        cursor: pointer;
+       }
+
+       .addTocartBtn {
+        border: none;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        font-weight: 700;
+        padding: 10px;
+       }
+
+        .openAndCloseCartBtn{
+            padding: 10px;
+            border: none;
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 3px;
+            right: 3px;
+            background-color: black;
+            border-radius: 50%;
+        }
+
+        .total-amount {
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: 700;
+            color: green;
+        }
+
+        .itemInCartContainer{
+            align-items: center;
+            display: flex;
+            background-color: white;
+            margin: 30px;
+            color: green;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .itemInCartContainer > button, .plusCountMinusBtn > button{
+            border: none;
+        }
+        .itemInCartIncrease, .itemInCartDecrease {
+            background-color: black;
+            border-radius: 3px;
+            color: white;
+            font-weight: 700;
+        }
+        .itemInCartRemove{
+            background-color: transparent;
+            color: red;
+        }
+
+        ::-webkit-scrollbar{
+            width: 3px;
+            height: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb{
+            background-color: rgb(95, 95, 95);
+            border-radius: 50px;
+        }
+
+        ::-webkit-scrollbar-track{
+            background-color: white;
+        }
+
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+
+
+.headerContainer2 {
+    background-color: rgb(17, 36, 17);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+}
+
+.brandNameContainer h1 {
+    margin: 0;
+    font-size: 30px;
+    color: rgb(172, 113, 5);
+}
+
+#searchBox {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+#searchBox:focus{
+    outline: none;
+    padding: 16px;
+}
+
+#suggestions {
+    position: fixed;
+    display: none;
+    border: 1px solid #ccc;
+    height: 100%;
+    width: 50%;
+    overflow-y: auto;
+    background-color: white;
+}
+
+.suggestion {
+    padding: 5px;
+    cursor: pointer;
+    color: black;
+}
+
+.suggestion:hover {
+    background-color: #f2f2f2;
+}
+
+.menuBtnContainer {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menuBtnContainer span {
+    height: 3px;
+    width: 35px;
+    background-color: #fff;
+    margin: 6px 0;
+}
+
+.menuContentContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.menuContent {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menuContent li {
+    margin-right: 20px;
+}
+
+.menuContent a {
+    text-decoration: none;
+    color: rgb(172, 113, 5);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#purchase {
+    border: none;
+    border-radius: 7px;
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    padding: 15px;
+    font-size: 25px;
+}
+
+.displayCheckOut {
+    position: fixed;
+    width: 0;
+    height: 100%;
+    background-color: wheat;
+    top: 0;
+    overflow: hidden;
+}
+.displayCheckOut2 {
+    position: fixed;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    top: 0;
+    overflow-y: scroll;
+    overflow-y: scroll;
+    color: green;
+}
+
+.oderDetails{
+    width: 100px;
+}
+
+input:focus{
+    outline: none;
+}
+
+
+.checkOutDefultDetailContainer {
+    display: none; 
+    flex-direction: column; 
+    padding: 20px; 
+    gap: 10px; 
+    overflow: hidden;
+    background-color: white;
+    border-radius: 5px;
+}
+.checkOutDefultDetailContainer2 {
+    display: flex; 
+    flex-direction: column; 
+    padding: 20px; 
+    gap: 10px; 
+    overflow: hidden;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.accountDetailsContainer {
+    display: none;
+    padding: 5px;
+    text-align: end;
+}
+.accountDetailsContainer2 {
+    padding: 5px;
+    text-align: end;
+}
+
+.finalCheckOutBtn {
+    display: none;
+    background-color: black;
+    border: none;
+    width: 50%;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 50px;
+}
+.finalCheckOutBtn2 {
+    background-color: black;
+    border: none;
+    width: 50%;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 50px;
+}
+
+#cancelPayment {
+    background-color: red;
+    border: none;
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#amDonePaying {
+    background-color: black;
+    border: none;
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.payNowLetterBtn {
+    display: flex;
+    justify-content: space-between;
+}
+.payNowLetterBtn > button {
+    background-color: black;
+    border: none;
+    width: 20%;
+    color: white;
+    font-weight: 900;
+    border-radius: 5px;
+}
+
+.progress-dot-loader2 {
+            gap: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background: yellow;
+            position: fixed;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+        }
+
+        .progress-dot-loader {
+            display: none;
+        }
+
+        @keyframes loading {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .loader {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            position: relative;
+            animation: loading 3s infinite;
+            text-align: center;
+        }
+
+        .dot {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            border: 0.5px solid grey;
+            margin: 8px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .dotContainer {
+            display: flex;
+        }
+
+        .dot.active {
+            background-color: green;
+        }
+
+/* Media query for responsive design */
+@media only screen and (max-width: 768px) {
+    #searchBox {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .menuBtnContainer {
+        display: flex;
+    }
+
+    .menuContentContainer {
+        overflow: hidden;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background-color: rgb(17, 36, 17);
+        width: 100%;
+        height: 0;
+        transition: 600ms;
+    }
+
+    .menuContent {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menuContent li {
+        margin: 10px 0;
+    }
+
+    .menuContentContainer.active {
+        display: flex;
+        height: 250px;
+    }
+
+    #suggestions {
+        height: 100%;
+        width: 50%;
+        left: 0;
+        position: fixed;
+        top: 85px;
+    }
+
+    .allItemWrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+    }
+
+    .allItemWrap > img {
+        width: 130px;
+        margin-bottom: 0;
+    }
+
+    .namePriceContainer {
+        width: 100%;
+    }
+
+    .namePriceContainer > p:nth-child(1) {
+        font-weight: 600;
+        font-size: 12px;
+        
+    }
+    .namePriceContainer > p:nth-child(2) {
+        font-weight: 600;
+        font-size: 12px;
+       line-height: 0;
+    }
+
+    .moreAddToCartBtnContainer {
+        margin: 0;
+        height: 30px;
+    }
+
+
+       .addTocartBtn {
+        font-weight: 700;
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    .namePriceContainer {
+       margin: 0;
+       height: 30px;
+    }
+
+    .cartContainer2 {
+        width: 100%;
+       }
+       .displayCheckOut2 {
+        width: 100%;
+       }
+}
+
+    </style>
+</head>
+<body>
+    <div class="progress-dot-loader2" id="loaderContainer">
+
+        <div class="loader">SUMAS MALL</div>
+    
+        <div class="dotContainer">
+            <div class="dot" id="dot1"></div>
+            <div class="dot" id="dot2"></div>
+            <div class="dot" id="dot3"></div>
+            <div class="dot" id="dot4"></div>
+        </div>
+    
+    </div>
+
+    <div id="headerContainer" class="headerContainer">
+
+        <div class="brandNameContainer">
+            <h1>SUMAS MALL</h1>
+        </div>
+
+        <div>
+            <button style="display: none;
+            background-color: transparent;
+            border: none;
+            color: red;
+            font-weight: 700;" id="closeSuggestion"></button>
+            <input type="text" id="searchBox" placeholder="Search items..." oninput="showSuggestions()">
+            <div id="suggestions"></div>
+        </div>
+
+        <div id="menuBtnContainer" class="menuBtnContainer" onclick="openMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+   <div id="menuContentContainer" class="menuContentContainer">
+            <ul id="menuContent" class="menuContent">
+                <li><a href="#">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#" onclick="openAndCloseCartBtn()">Cart</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;" >
+            <h1 style="font-family: 'Lucida Sans', 
+            'Lucida Sans Regular', 
+            'Lucida Grande', 
+            'Lucida Sans Unicode', Geneva, Verdana, 
+            sans-serif; color: green;" id="product">Food</h1>
+            <div style="display: flex; 
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;" 
+            id="food-container">
+          </div>   
+    </div>
+    
+    <div style="display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;" >
+            <h1 style="font-family: 'Lucida Sans', 
+            'Lucida Sans Regular', 
+            'Lucida Grande', 
+            'Lucida Sans Unicode', Geneva, Verdana, 
+            sans-serif; color: green;" id="product">Phones</h1>
+            <div style="display: flex; 
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;" 
+            id="items-container">
+          </div>   
+    </div>
+
+    <div style="display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;" >
+            <h1 style="font-family: 'Lucida Sans', 
+            'Lucida Sans Regular', 
+            'Lucida Grande', 
+            'Lucida Sans Unicode', Geneva, Verdana, 
+            sans-serif; color: green;" id="product">Fruits</h1>
+            <div style="display: flex; 
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;" 
+            id="fruit-container">
+          </div>   
+    </div>
+
+    <div style="display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;" >
+            <h1 style="font-family: 'Lucida Sans', 
+            'Lucida Sans Regular', 'Lucida Grande', 
+            'Lucida Sans Unicode', Geneva, Verdana,
+             sans-serif; color: green; " id="product">Accessories</h1>
+            <div style="display: flex; 
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;"
+            id="accessories-container">
+            </div>
+    </div>        
+
+    <div style="display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;" >
+            <h1 style="font-family: 'Lucida Sans', 
+            'Lucida Sans Regular', 'Lucida Grande', 
+            'Lucida Sans Unicode', Geneva, Verdana,
+             sans-serif; color: green; " id="product">Tins & Sachect</h1>
+            <div style="display: flex; 
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;"
+            id="tinsSachect-container">
+            </div>
+    </div>        
+
+    <div class="cartContainer" id="cart">
+        <h2>Shopping Cart</h2>
+        <p class="total-amount">Total Amount: $<span id="total-amount">0</span></p>
+        <ul style="list-style: decimal;"
+        id="cart-list">
+
+        </ul>
+        <button id="openAndCloseCartBtn" class="openAndCloseCartBtn" onclick="openAndCloseCartBtn()">
+            <b style="margin: 0; color: white; font-size: 13px;
+            background-color: red;
+            padding: 2px;
+            border-radius: 50%;" id="ItemInTheCartCount"></b>
+            <img width="80%" src="shopping_cart_green-removebg-preview.png" alt="Cart">
+        </button>
+        <button id="purchase" onclick="checkout()">Purchase</button>
+    </div>
+
+            <form action="https://formspree.io/f/xnqkezey" method="POST" class="displayCheckOut" id="displayCheckOut">
+                <h2><b>Check Out Info</b></h2>
+
+                <p style="margin: 20px;"><b>Below are the list of the thing you want to oder. You are expected to make your 
+                    payment before you Check Out
+                </b></p>
+
+                <div class="oderCheckOut" id="oderCheckOut">
+                    <input name="totalPrice" value="hello" class="oderDetails" readonly type="text" id="totalPrice">
+                </div>
+
+                <div class="payNowLetterBtn">
+                    <b>Do You want To Pay now</b>
+                    <button id="payNowYesBtn">Yes</button>
+                    <button id="payNowNoBtn">later</button>
+                </div>
+
+                <div id="accountDetailsContainer" class="accountDetailsContainer">
+                    <h2><b>Pay Into This Account</b></h2>
+                    <b>Acc No: 7059869061</b><br><br>
+                    <b>Palmpay</b> <br><br>
+                    <b>Timothy Ebube Eze</b><br><br>
+                    <h3>Go to your Bank App and make your Payment
+                        and when you are done click the button below
+                    </h3>
+
+                    <button id="amDonePaying">Am Don</button>
+                </div>
+        
+                <div class="checkOutDefultDetailContainer" id="checkOutDefultDetailContainer">
+                    <h3><b>Enter Your Details:</b></h3>
+                    <label for="">Acc Name</label>
+                        <input class="formInputs" name="accontName" id="accontName" type="text" placeholder="Acount Name">
+                    <label for="">Date</label>
+                        <input class="formInputs" name="dateOfpayment" id="dateOfpayment" type="date" placeholder="Date Of Payment">
+                    <label for="">Time</label>    
+                        <input class="formInputs" name="TimeOfPayment" id="TimeOfPayment" type="time" placeholder="Time Of Payment">
+                </div>
+                
+                <button class="finalCheckOutBtn" id="finalCheckOutBtn">Check Out</button>
+                <button style="margin-top: 20px;" id="cancelPayment">cancel</button>
+            </form>
+
+<script>
+        const items = [
+            { name: 'Tecno carmon 20 ITM 1', price: 140000, image: ' carmon20.jpeg' },
+            { name: 'Tecno carmon 20 pro  ITM 3', price: 170000, image: ' carmon20Pro.jpeg' },
+            { name: 'Tecno carmon 20 Pro 5G ITM 4', price: 220000, image: ' carmon20Pro5G.jpg' },
+            { name: 'Samsung Galaxy A14 ITM 5', price: 120000, image: ' Galaxy A14.jpeg' },
+            { name: 'Samsung Galaxy A34 5G ITM 6', price: 155000, image: ' Galaxy A34 5G.jpeg' },
+            { name: 'Samsung Galaxy A54 5G ITM 7', price: 330000, image: ' Galaxy A54 5G.jpeg' },
+            { name: 'Samsung Galaxy A14 5G ITM 8', price: 150000, image: ' Galaxy A145G.jpeg' },
+            { name: 'Infinix Hot 30 pro ITM 9', price: 180000, image: ' Hot 30 pro.jpeg' },
+            { name: 'Infinix Hot 30 ITM 10', price: 120000, image: ' hot 30.jpeg' },
+            { name: 'Infinix Hot 30i ITM 11', price: 115000, image: ' Hot 30i.jpeg' },
+            { name: 'Infinix Note 30 ITM 12', price: 176000, image: ' InfinixNote30.jpeg' },
+            { name: 'Infinix Note 30 pro ITM 13', price: 210000, image: ' InfinixNote30Pro.jpeg' },
+            { name: 'Infinix Note 30 pro 5G ITM 14', price: 237000, image: ' InfinixNote30pro5G.jpeg' },
+            { name: 'Tecno Spark 10 ITM 15', price: 120000, image: ' Spark10.jpeg' },
+            { name: 'Tecno Spark 10 C ITM 16', price: 104000, image: ' Spark10C.jpeg' },
+            { name: 'Tecno Spark 10 Pro ITM 17', price: 164000, image: ' Spark10pro.jpeg' },
+            { name: 'tin Peak Milk ITM 18', price: 7000, image: ' tinPeakMilk.jpeg' },
+            { name: 'Oriemo Charger 33 watt 2 pin ITM 19', price: 4500, image: ' OriemoCharger 33watt 2pin.jpeg' },
+            { name: 'red Garri In cup ITM 12', price: 70, image: ' redGarriIncup.jpg' },
+            { name: 'red Oil ITM 21', price: 4500, image: 'redOil.jpeg' },
+        ];
+
+        const accessories = [
+            { name: 'Oraimo Earpod Ac 1', price: 7500, image: 'OraimoEarpod.jpeg' },
+            { name: 'Oraimo EarPiece Ac 2', price: 2500, image: ' OraimoEarPiece.jpeg' },
+            { name: 'Oriemo Charger 2pin Ac 3', price: 3500, image: ' OriemoCharger 2pin.jpeg' },
+            { name: 'Oriemo Charger 3pin Ac 4', price: 3500, image: ' OriemoCharger 3pin.jpeg' },
+            { name: 'Oriemo Charger 33 watt 3pin Ac 5', price: 5500, image: ' OriemoCharger 33 watt 3pin.jpeg' },
+            { name: 'Oriemo Charger 33watt 2pin Ac 6', price: 5500, image: ' OriemoCharger 33watt 2pin.jpeg' },
+            { name: 'shplus Chager Ac 7', price: 4500, image: ' shplusChager.jpeg' },
+            { name: 'Tucas Charger Ac 8', price: 3500, image: ' TucasCharger.jpeg' },
+            { name: 'TypeC Cord Ac 9', price: 2500, image: ' TypeC.jpeg' },
+            { name: 'TypeC To C Cord Ac 10', price: 2500, image: ' TypeCToC.jpeg' },
+            { name: 'amazon Charger Ac 11', price: 3500, image: ' amazonCharger.jpeg' },
+            { name: 'android Cord Ac 12', price: 1500, image: ' androidCord.jpeg' },
+            { name: 'ear Piece Ac 13', price: 2500, image: ' earPiece.png' },
+            { name: 'headPhone Ac 14', price: 9500, image: ' headPhone 1.jpeg' },
+            { name: 'HeadPhone Ac 15', price: 8500, image: ' HeadPhone.jpg' },
+            { name: 'Iphon Cord Ac 16', price: 2500, image: ' IphonCord.jpeg' },
+            { name: 'Itel Charger Ac 17', price: 3500, image: ' ItelCharger.jpeg' },
+            { name: 'mini headPhone Ac 19', price: 6500, image: ' mini headPhone.jpeg' },
+        ];
+
+        const foods = [
+            { name: 'belleFull noodles FD 1', price: 700, image: ' belleFullnood.png' },
+            { name: 'garriIn Paint FD 3', price: 1300, image: ' garriInPaint.png' },
+            { name: 'garri packaged FD 4', price: 900, image: ' garripackaged.jpg' },
+            { name: 'Golden Penny Spaghetti FD 5', price: 750, image: ' GoldenPenny.jpeg' },
+            { name: 'Kings Oil FD 6', price: 6000, image: ' KingsOil.jpeg' },
+            { name: 'Kings Oil 2 FD 7', price: 3000, image: ' KingsOil2.jpeg' },
+            { name: 'macaroni FD 8', price: 1000, image: ' macaroni.jpeg' },
+            { name: 'maize FD 9', price: 50, image: ' maize.jpeg' },
+            { name: 'potato FD 11', price: 100, image: ' potato.jpeg' },
+            { name: 'power Oil Sachet FD 12', price: 150, image: ' powerOilSachet.jpeg' },
+            { name: 'power Oil FD 13', price: 2500, image: ' powerOil.jpeg' },
+            { name: 'power Past noodles FD 14', price: 700, image: 'powerPastnood.jpeg ' },
+            { name: 'red Oil FD 15', price: 3500, image: ' redOil.jpeg' },
+            { name: 'rice FD 16', price: 200, image: ' rice.jpg' },
+            { name: 'supreme Noodles FD 17', price: 350, image: ' supremeNood.jpeg' },
+            { name: 'tummytummy noodles FD 18', price: 250, image: ' tummytummy.jpeg' },
+            { name: 'white Garri in Cup FD 19', price: 70, image: ' whiteGarri.jpg' },
+            { name: 'white Garri In Paint FD 19', price: 1300, image: ' whiteGarriInPaint.jpg' },
+            { name: 'yam FD 19', price: 2000, image: ' yam.jpg' },
+            { name: 'water Melon FD 19', price: 2000, image: ' waterMelon.jpeg' },
+            { name: 'Tecno Spark 10 pro FD 20', price: 170000, image: ' Spark10pro.jpeg' },
+        ];
+        const fruits = [
+            { name: 'banana FTS 1', price: 50, image: ' banana (2).jpeg' },
+            { name: 'carrot FTS 2', price: 60, image: ' carrot.jpeg' },
+            { name: 'cucumba FTS 3', price: 150, image: ' cucumba.jpeg' },
+            { name: 'Coconut FTS 4', price: 300, image: ' Coconut.jpeg' },
+            { name: 'gadern Egg FTS 5', price: 50, image: ' gadernEgg.jpeg' },
+            { name: 'green Apple FTS 6', price: 300, image: ' greenApple.jpeg' },
+            { name: 'pawpaw FTS 8', price: 700, image: ' pawpaw.jpeg' },
+            { name: 'plantain FTS 9', price: 70, image: ' plantain.jpeg' },
+            { name: 'potato FTS 10', price: 200, image: ' potato.jpeg' },
+            { name: 'power Oil Sachet FTS 11', price: 150, image: ' powerOilSachet.jpeg' },
+            { name: 'red apple FTS 12', price: 400, image: 'redapple.jpeg ' },
+            { name: 'water Melon FTS 13', price: 1500, image: ' waterMelon.jpeg' },
+            { name: 'Tucas Charger FTS 14', price: 5000, image: ' TucasCharger.jpeg' },
+        ];
+
+        const tinsSachect = [
+            { name: 'Big Clapper TST 1', price: 4000, image: ' BigClapper.jpeg' },
+            { name: 'big Sachet Peck Milk TST 2', price: 7900, image: ' bigSachePeckMilk.jpeg' },
+            { name: 'big Tin Peak Milk TST 3', price: 15000, image: ' bigTinPeakMilk.jpeg' },
+            { name: 'CLapper Flat TST 4', price: 600, image: ' CLapperFlat.jpeg' },
+            { name: 'CLapper Medium TST 5', price: 1200, image: ' CLapperMedium.jpeg' },
+            { name: 'Cup BournVita TST 6', price: 10000, image: ' CupBournVita.jpeg' },
+            { name: 'de Rica Sachet Tomatoes TST 7', price: 200, image: ' deRicaSachetTomatoes.png' },
+            { name: 'fiaminta Big TST 8', price: 4000, image: ' fiamintaBig.jpeg' },
+            { name: 'fiaminta Flat TST 9', price: 600, image: ' fiamintaFlat.jpeg' },
+            { name: 'fiaminta Medium TST 10', price: 1200, image: ' fiamintaMedium.jpeg' },
+            { name: 'Gino TST 12', price: 300, image: ' Gino-Tomato-1-2 (1) (1).png' },
+            { name: 'Overtine TST 13', price: 12000, image: ' Overtine.jpeg' },
+            { name: 'power Oil Sachet TST 14', price: 300, image: ' powerOilSachet.jpeg' },
+            { name: 'sachet BournVita TST 15', price: 150, image: ' sachetBournVita.jpeg' },
+            { name: 'sachet cowbel TST 16', price: 100, image: ' sachetCowbelTea.jpeg' },
+            { name: 'sachet Milo TST 17', price: 120, image: ' sachetMilo.jpeg' },
+            { name: 'sarah Big TST 18', price: 4000, image: ' sarahBig.jpeg' },
+            { name: 'sarah flat TST 19', price: 600, image: ' sarahflat.jpeg' },
+            { name: 'sarah Medium TST 20', price: 1200, image: ' sarahMed.jpg' },
+            { name: 'Tin Milo TST 21', price: 10000, image: ' TinMilo.jpeg' },
+            { name: 'tin Peak Milk TST 22', price: 11000, image: ' tinPeakMilk.jpeg' },
+            { name: ' sachet peak Milk TST 23', price: 150, image: ' sacchet peakMilk.jpeg' },
+        ];
+
+        const cart = [];
+
+    function openMenu() {
+        const menuBtnContainer = document.getElementById('menuBtnContainer');
+        const menuContentContainer = document.getElementById('menuContentContainer');
+            menuContentContainer.classList.toggle('active')
+        
+}
+  
+function openAndCloseCartBtn() {
+        const openAndCloseCartBtn = document.getElementById('openAndCloseCartBtn');
+        const cartContainer = document.getElementById('cart')
+            if (cartContainer.className === "cartContainer") {
+                cartContainer.classList.add('cartContainer2')
+                cartContainer.classList.remove('cartContainer')
+                cartContainer.style.transition = '1s'
+            } else {
+                cartContainer.classList.remove('cartContainer2')
+                cartContainer.classList.add('cartContainer')
+
+            }
+    }
+
+    let progress = 0;
+    const dots = document.querySelectorAll('.dot');
+    const loaderContainer = document.getElementById('loaderContainer');
+    const headerContainer = document.getElementById('headerContainer');
+
+    function updateProgress() {
+        progress = (progress + 1) % dots.length;
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].classList.toggle('active', i === progress);
+        }
+    }
+
+    setInterval(updateProgress, 250);
+
+    // Simulate loading completion after 5 seconds (replace this with your actual loading logic)
+    setTimeout(() => {
+        loaderContainer.style.display = 'none';
+        headerContainer.classList.remove('headerContainer');
+        headerContainer.classList.add('headerContainer2');
+    }, 3000);
+
+    const checkOutDefultDetailContainer = document.getElementById('checkOutDefultDetailContainer');
+            const accountDetailsContainer = document.getElementById('accountDetailsContainer');
+            const payNowYesBtn = document.getElementById('payNowYesBtn');
+            const payNowNoBtn = document.getElementById('payNowNoBtn');
+            const accontName = document.getElementById('accontName');
+            const dateOfpayment = document.getElementById('dateOfpayment');
+            const TimeOfPayment = document.getElementById('TimeOfPayment');
+            const finalCheckOutBtn = document.getElementById('finalCheckOutBtn');
+            const amDonePaying = document.getElementById('amDonePaying');
+
+            const totalAmount = document.getElementById('total-amount');
+            const totalPrice = document.getElementById('totalPrice');
+
+
+    payNowYesBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        if (accountDetailsContainer.className === 'accountDetailsContainer') {
+        accountDetailsContainer.classList.add('accountDetailsContainer2')
+        accountDetailsContainer.classList.remove('accountDetailsContainer')
+        payNowYesBtn.innerText = 'No';
+        payNowYesBtn.style.color = 'red';
+        payNowNoBtn.setAttribute('disabled', true);
+       } else {
+        accountDetailsContainer.classList.remove('accountDetailsContainer2')
+        accountDetailsContainer.classList.add('accountDetailsContainer')
+        payNowYesBtn.innerText = 'Yes';
+        payNowYesBtn.style.color = 'white';
+        payNowNoBtn.removeAttribute('disabled', false);
+       }
+    })
+
+    payNowNoBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        if (finalCheckOutBtn.className === 'finalCheckOutBtn') {
+        finalCheckOutBtn.classList.add('finalCheckOutBtn2')
+        finalCheckOutBtn.classList.remove('finalCheckOutBtn')
+        payNowNoBtn.innerText = 'Yes';
+        payNowNoBtn.style.color = 'red';
+        payNowYesBtn.setAttribute('disabled', true);
+       } else {
+        finalCheckOutBtn.classList.remove('finalCheckOutBtn2')
+        finalCheckOutBtn.classList.add('finalCheckOutBtn')
+        payNowNoBtn.innerText = 'Later';
+        payNowNoBtn.style.color = 'white';
+        payNowYesBtn.removeAttribute('disabled', false);
+       }
+    })
+
+    amDonePaying.addEventListener('click', (e) => {
+        e.preventDefault()
+        if (checkOutDefultDetailContainer.className === 'checkOutDefultDetailContainer') {
+        checkOutDefultDetailContainer.classList.add('checkOutDefultDetailContainer2')
+        checkOutDefultDetailContainer.classList.remove('checkOutDefultDetailContainer')
+        finalCheckOutBtn.classList.add('finalCheckOutBtn2')
+        finalCheckOutBtn.classList.remove('finalCheckOutBtn')
+        amDonePaying.innerText = 'Not yet';
+        amDonePaying.style.color = 'red';
+        payNowYesBtn.setAttribute('disabled', true);
+        payNowNoBtn.setAttribute('disabled', true);
+
+        finalCheckOutBtn.addEventListener('click', (e) => {
+        if (accontName.value == '' || dateOfpayment.value == '' || TimeOfPayment.value == '') {
+            alert('please fill your details');
+            e.preventDefault()
+        } 
+    })
+       } else {
+        checkOutDefultDetailContainer.classList.remove('checkOutDefultDetailContainer2')
+        checkOutDefultDetailContainer.classList.add('checkOutDefultDetailContainer')
+        finalCheckOutBtn.classList.remove('finalCheckOutBtn2')
+        finalCheckOutBtn.classList.add('finalCheckOutBtn')
+        amDonePaying.innerText = 'Am Done';
+        amDonePaying.style.color = 'white';
+        payNowYesBtn.removeAttribute('disabled', false);
+        payNowNoBtn.setAttribute('disabled', true);
+       }
+    })
+
+            const totalCheckOutDis = document.getElementById('totalCheckOutDis');
+            const  cancelPayment = document.getElementById('cancelPayment');
+            const oderFormContainer = document.getElementById('oderFormContainer');
+            const displayCheckOut = document.getElementById('displayCheckOut');
+            const purchase = document.getElementById('purchase');
+
+            
+
+            cancelPayment.addEventListener('click', (e) => {
+                e.preventDefault()
+                if (displayCheckOut.className === "displayCheckOut") {
+                    displayCheckOut.classList.add('displayCheckOut2')
+                    displayCheckOut.classList.remove('displayCheckOut')
+                    displayCheckOut.style.transition = '1s'
+                } else {
+                    displayCheckOut.classList.remove('displayCheckOut2')
+                    displayCheckOut.classList.add('displayCheckOut')
+
+                }
+            })
+            purchase.addEventListener('click', (e) => {
+                e.preventDefault()
+                if (displayCheckOut.className === "displayCheckOut") {
+                    displayCheckOut.classList.add('displayCheckOut2')
+                    displayCheckOut.classList.remove('displayCheckOut')
+                    displayCheckOut.style.transition = '1s'
+                } else {
+                    displayCheckOut.classList.remove('displayCheckOut2')
+                    displayCheckOut.classList.add('displayCheckOut')
+                }
+            })
+
+        function displayItems() {
+            const itemsContainer = document.getElementById('items-container');
+
+            items.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.innerHTML = `
+                    <div class="allItemWrap">
+    
+                            <img class='cartImage' src="${item.image}" alt="${item.name}">
+                            <div class="itemValuesContainer">
+                                <div class='namePriceContainer'>
+                                    <p>${item.name}</p>
+                                    <p>: ₦${item.price}</p>
+                                </div>
+                                <div class='moreAddToCartBtnContainer'>    
+                                    <button class='moreBtn'>More</button>
+                                    <button class='addTocartBtn' onclick="addToCart('${item.name}')">Add to Cart</button>
+                                </div>    
+                            </div>
+                    </div>
+                `;
+                itemsContainer.appendChild(itemElement);
+            });
+        }
+
+        function displayFoods() {
+            const foodContainer = document.getElementById('food-container');
+
+            foods.forEach(item => {
+                const foodElement = document.createElement('div');
+                foodElement.innerHTML = `
+                    <div class="allItemWrap">
+    
+                            <img class='cartImage' src="${item.image}" alt="${item.name}">
+                            <div class="itemValuesContainer">
+                                <div class='namePriceContainer'>
+                                    <p>${item.name}</p>
+                                    <p>: ₦${item.price}</p>
+                                </div>
+                                <div class='moreAddToCartBtnContainer'>    
+                                    <button class='moreBtn'>More</button>
+                                    <button class='addTocartBtn' onclick="addToCart('${item.name}')">Add to Cart</button>
+                                </div>    
+                            </div>
+                    </div>
+                `;
+                foodContainer.appendChild(foodElement);
+            });
+        }
+
+        function displayFruits() {
+            const fritContainer = document.getElementById('fruit-container');
+
+            fruits.forEach(item => {
+                const fritElement = document.createElement('div');
+                fritElement.innerHTML = `
+                    <div class="allItemWrap">
+    
+                            <img class='cartImage' src="${item.image}" alt="${item.name}">
+                            <div class="itemValuesContainer">
+                                <div class='namePriceContainer'>
+                                    <p>${item.name}</p>
+                                    <p>: ₦${item.price}</p>
+                                </div>
+                                <div class='moreAddToCartBtnContainer'>    
+                                    <button class='moreBtn'>More</button>
+                                    <button class='addTocartBtn' onclick="addToCart('${item.name}')">Add to Cart</button>
+                                </div>    
+                            </div>
+                    </div>
+                `;
+                fritContainer.appendChild(fritElement);
+            });
+        }
+
+        function displayAccessories() {
+            const accessoriesContainer = document.getElementById('accessories-container');
+
+            accessories.forEach(item => {
+                const accessoryElement = document.createElement('div');
+                accessoryElement.innerHTML = `
+                    <div class="allItemWrap">
+                            <img class='cartImage' src="${item.image}" alt="${item.name}">
+                            <div class="itemValuesContainer">
+                                <div class='namePriceContainer'>
+                                    <p>${item.name}</p>
+                                    <p>: ₦${item.price}</p>
+                                </div>
+                                <div class='moreAddToCartBtnContainer'>    
+                                    <button class='moreBtn'>More</button> 
+                                    <button class='addTocartBtn' onclick="addToCart('${item.name}')">Add to Cart</button>
+                                </div>
+                            </div>
+                       
+                    </div>     
+                `;
+                accessoriesContainer.appendChild(accessoryElement);
+            });
+        }
+
+        function displayTinsSachect() {
+            const tinsSachectContainer = document.getElementById('tinsSachect-container');
+
+            tinsSachect.forEach(item => {
+                const tinsSachectElement = document.createElement('div');
+                tinsSachectElement.innerHTML = `
+                    <div class="allItemWrap">
+                            <img class='cartImage' src="${item.image}" alt="${item.name}">
+                            <div class="itemValuesContainer">
+                                <div class='namePriceContainer'>
+                                    <p>${item.name}</p>
+                                    <p>: ₦${item.price}</p>
+                                </div>
+                                <div class='moreAddToCartBtnContainer'>    
+                                    <button class='moreBtn'>More</button> 
+                                    <button class='addTocartBtn' onclick="addToCart('${item.name}')">Add to Cart</button>
+                                </div>
+                            </div>
+                       
+                    </div>     
+                `;
+                tinsSachectContainer.appendChild(tinsSachectElement);
+            });
+        }
+
+        function addToCart(itemName) {
+            const selectedItem = items.find(item => item.name === itemName) ||
+                                accessories.find(item => item.name === itemName) ||
+                                foods.find(item => item.name === itemName) ||
+                                fruits.find(item => item.name === itemName) ||
+                                tinsSachect.find(item => item.name === itemName);
+
+            if (selectedItem) {
+                const existingCartItem = cart.find(item => item.name === itemName);
+
+                if (existingCartItem) {
+                    existingCartItem.quantity += 1;
+                } else {
+                    selectedItem.quantity = 1;
+                    cart.push(selectedItem);
+                }
+
+                updateCart();
+            }
+            const ItemInTheCartCount = document.getElementById('ItemInTheCartCount');
+            const cartList = document.getElementById('cart-list');
+            const numberOfItems = cartList.childElementCount;
+            ItemInTheCartCount.innerText = numberOfItems;
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById('cart-list');
+            const totalAmountElement = document.getElementById('total-amount');
+            cartList.innerHTML = '';
+
+            let totalAmount = 0;
+
+            cart.forEach(item => {
+                const cartItem = document.createElement('li');
+                const itemTotal = item.price * item.quantity;
+                totalAmount += itemTotal;
+
+                cartItem.innerHTML = `
+                <div class="itemInCartContainer">
+                    <img width='100px' src="${item.image}" alt="">
+                    ${item.name} - ₦${itemTotal}
+                            <div class="plusCountMinusBtn">
+                                <button class="itemInCartIncrease" onclick="updateQuantity('${item.name}', 'increase')">+</button>
+                                <span>${item.quantity}</span>
+                                <button class="itemInCartDecrease" onclick="updateQuantity('${item.name}', 'decrease')">-</button>
+                            </div>
+                            <button class="itemInCartRemove" onclick="removeFromCart('${item.name}')">Remove</button>
+                </div>    
+                `;
+                cartList.appendChild(cartItem);
+            });
+
+            totalAmountElement.textContent = totalAmount.toFixed(2);
+        }
+
+        function removeFromCart(itemName) {
+            const itemIndex = cart.findIndex(item => item.name === itemName);
+            cart.splice(itemIndex, 1);
+            updateCart();
+
+            const ItemInTheCartCount = document.getElementById('ItemInTheCartCount');
+            const cartList = document.getElementById('cart-list');
+            const numberOfItems = cartList.childElementCount;
+            ItemInTheCartCount.innerText = numberOfItems;
+        }
+
+        function updateQuantity(itemName, action) {
+            const selectedItem = cart.find(item => item.name === itemName);
+
+            if (selectedItem) {
+                if (action === 'increase') {
+                    selectedItem.quantity += 1;
+                } else if (action === 'decrease' && selectedItem.quantity > 1) {
+                    selectedItem.quantity -= 1;
+                }
+
+                updateCart();
+            }
+            
+        }
+
+            
+
+
+        function checkout() {
+            const oderCheckOut = document.getElementById('oderCheckOut');
+            const totalAmount = document.getElementById('total-amount');
+            const totalPrice = document.getElementById('totalPrice');
+            totalPrice.value = 'TOTAL:' + totalAmount.innerText;
+            const cartList = document.getElementById('cart-list');
+            const numberOfItems = cartList.childElementCount;
+
+            cart.forEach(item => {
+                const checkoutItem = document.createElement('input');
+                checkoutItem.setAttribute('type', 'text')
+                checkoutItem.setAttribute('readonly', true)
+                checkoutItem.setAttribute('name', 'oderDetails')
+                checkoutItem.setAttribute('class', 'oderDetails')
+                checkoutItem.value = `Name: ${item.name}, Price: $${item.price}, Quantity: ${item.quantity}`;
+                oderCheckOut.appendChild(checkoutItem);
+            });
+
+            if (numberOfItems < 1) {
+                alert('nothing in the cart')
+                displayCheckOut.classList.remove('displayCheckOut2')
+                displayCheckOut.classList.add('displayCheckOut')
+            } 
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function shuffleContainers(container, items, numItems) {
+    const shuffledItems = shuffleArray(items);
+    const randomItems = shuffledItems.slice(0, numItems);
+    container.innerHTML = ''; // Clear the container
+    randomItems.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.innerHTML = `
+            <div class="allItemWrap">
+                <img src="${item.image}" alt="${item.name}">
+                <div class="itemValuesContainer">
+                    <div class='namePriceContainer'>
+                        <p>${item.name}</p>
+                        <p>: ₦${item.price}</p>
+                    </div>
+                    <div class='moreAddToCartBtnContainer'>    
+                        <button class='moreBtn'>More</button>
+                        <button class='addTocartBtn' onclick="addToCart('${item.name}')">Add to Cart</button>
+                    </div>    
+                </div>
+            </div>
+        `;
+        container.appendChild(itemElement);
+    });
+}
+
+function displayRandomItems() {
+    const itemsContainer = document.getElementById('items-container');
+    const accessoriesContainer = document.getElementById('accessories-container');
+    const foodContainer = document.getElementById('food-container');
+    const fruitContainer = document.getElementById('fruit-container');
+    const tinsSachectContainer = document.getElementById('tinsSachect-container');
+    const numItemsPerContainer = 6; // Change this to the desired number of items
+    shuffleContainers(itemsContainer, items, numItemsPerContainer);
+    shuffleContainers(accessoriesContainer, accessories, numItemsPerContainer);
+    shuffleContainers(foodContainer, foods, numItemsPerContainer);
+    shuffleContainers(fruitContainer, fruits, numItemsPerContainer);
+    shuffleContainers(tinsSachectContainer, tinsSachect, numItemsPerContainer);
+}
+
+
+document.body.addEventListener('click', function(event) {
+    const suggestionsContainer = document.getElementById('suggestions');
+    const searchBox = document.getElementById('searchBox');
+
+    if (!event.target.closest('#suggestions') && !event.target.closest('#searchBox')) {
+        suggestionsContainer.style.display = 'none';
+    }
+    
+});
+
+        function showSuggestions() {
+            const searchBox = document.getElementById('searchBox');
+            const searchTerm = searchBox.value.toLowerCase();
+            const suggestionsContainer = document.getElementById('suggestions');
+            if (searchTerm.trim() === '') {
+                suggestionsContainer.style.display = 'none';
+                return;
+            }
+            suggestionsContainer.innerHTML = '';
+            const matchingItems = [...items, ...accessories, ...foods, ...fruits, ...tinsSachect].filter(item => item.name.toLowerCase().includes(searchTerm));
+            matchingItems.forEach(item => {
+                const suggestion = document.createElement('div');
+                suggestion.className = 'suggestion';
+                suggestion.textContent = item.name;
+                suggestion.onclick = () => selectSuggestion(item.name);
+                suggestionsContainer.appendChild(suggestion);
+            });
+            suggestionsContainer.style.display = matchingItems.length > 0 ? 'block' : 'none';
+            if (matchingItems.length < 1){
+                alert('no matching result')
+            }
+        }
+
+        function selectSuggestion(selectedItemName) {
+            document.getElementById('searchBox').value = selectedItemName;
+            document.getElementById('suggestions').style.display = 'none';
+            const selectedItem = items.find(item => item.name === selectedItemName) ||
+            accessories.find(item => item.name === selectedItemName) ||
+            foods.find(item => item.name === selectedItemName) ||
+            fruits.find(item => item.name === selectedItemName) ||
+            tinsSachect.find(item => item.name === selectedItemName);
+            if (selectedItem) {
+                const containerId = selectedItem.image ? 'items-container' : 'accessories-container';
+                clearContainers();
+                displayFilteredItems([selectedItem], containerId);
+            }
+        }
+
+        function clearContainers() {
+            document.getElementById('items-container').innerHTML = '';
+            document.getElementById('accessories-container').innerHTML = '';
+            document.getElementById('food-container').innerHTML = '';
+            document.getElementById('fruit-container').innerHTML = '';
+            document.getElementById('tinsSachect-container').innerHTML = '';
+            document.querySelectorAll('#product').forEach((name, index) => {
+                name.style.display = 'none'
+            })
+        }
+
+        function displayFilteredItems(filteredItems, containerId) {
+            const container = document.getElementById(containerId);
+            filteredItems.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.innerHTML = `
+                    <div class="allItemWrap">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="itemValuesContainer">
+                            <div class='namePriceContainer'>
+                                <p>${item.name}</p>
+                                <p>: ₦${item.price}</p>
+                            </div>
+                            <div class='moreAddToCartBtnContainer'>    
+                                <button class='moreBtn'>More</button>
+                                <button class='addTocartBtn' onclick="addToCart('${item.name}')">Add to Cart</button>
+                            </div>    
+                        </div>
+                    </div>
+                `;
+                container.appendChild(itemElement);
+            });
+        }
+        
+        // displayItems();
+        // displayAccessories();
+        updateCart();
+        displayRandomItems();
+    </script>
+</body>
+</html>
